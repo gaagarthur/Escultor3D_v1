@@ -91,7 +91,7 @@ public:
      */
     void putVoxel(int x, int y, int z);
     /**
-     * O método cutVoxel "Liga" um único voxel nas coordenadas (x,y,z).
+     * O método cutVoxel "Desliga" um único voxel nas coordenadas (x,y,z).
      * ---------
      * @details Na matriz, nas coodenadas (x, y, z), são acessadas as
      * @details propriedas do voxel onde é feito show = false.
@@ -131,7 +131,7 @@ public:
      * }
      * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      * #### paralelepipedo criado:
-     * ![](putbox.png)
+     * ![](/Users/arthurgaag/Projects/PA/Escultor3D_1/Documentation/putbox.png)
      */
     void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
     /**
@@ -141,11 +141,78 @@ public:
      * porém ao invés de ligar os voxels ele os desativa.
      */
     void cutBox(int x0, int x1, int y0, int y1, int z0, int z1);
+    /**
+     * O método putSphere "Liga" todos os voxels nas coordenadas pertencentes a uma esfera.
+     * ---------
+     * @details Para formar esfera são passados como parâmetrosseis quatro valores
+     * inteiros. Esses correspondem as coordenadas (x, y, z) do centro
+     * da esfera e o último é o valor do raio.
+     *
+     * #### Exemplo:
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+     * #include "sculptor.hpp"
+     *
+     * int main(void){
+     *    Sculptor escultura(15, 15, 15);
+     *    escultura.setColor(1.0, 0.0, 0.0, 1.0);
+     *    escultura.putSphere(7,7,7,5);
+     *    // ligado uma esfera de voxels
+     *    // que tem um centro em (7, 7, 7)
+     *    // e raio = 5
+     *
+     * }
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * #### Esfera criado:
+     * ![](/Users/arthurgaag/Projects/PA/Escultor3D_1/Documentation/sphere.png)
+     */
     void putSphere(int xcenter, int ycenter, int zcenter, int radius);
+    /**
+     * O método cutSphere "Desliga" todos os voxels nas coordenadas pertencentes a uma esfera.
+     * ----------------
+     * @details O cutSphere() recebe valores da mesma forma que o método putSphere()
+     * porém ao invés de ligar os voxels ele os desativa.
+     */
     void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
   /*void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   */
+    /**
+     * O método writeOFF() varre a matriz e cria um arquivo no formato ".OFF".
+     * @details Recebe como parâmetro o nome do arqivo off a ser criado incluindo o ".off".
+     *
+     * #### Exemplo:
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+     * #include "sculptor.hpp"
+     *
+     * int main(void){
+     *    Sculptor escultura(3, 3, 3);
+     *    escultura.setColor(1.0, 0.0, 0.0, 1.0);
+     *    escultura.putVoxel(1,1,1);
+     *    escultura.writeOFF("Voxel.off");
+     *
+     * }
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * #### Arquivo criado.
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.txt
+     * OFF
+     * 8 6 0
+     * 0.50 1.50 0.50
+     * 0.50 0.50 0.50
+     * 1.50 0.50 0.50
+     * 1.50 1.50 0.50
+     * 0.50 1.50 1.50
+     * 0.50 0.50 1.50
+     * 1.50 0.50 1.50
+     * 1.50 1.50 1.50
+     *
+     * 4 0 3 2 1 1.00 0.00 0.00 1.00
+     * 4 4 5 6 7 1.00 0.00 0.00 1.00
+     * 4 0 1 5 4 1.00 0.00 0.00 1.00
+     * 4 0 4 7 3 1.00 0.00 0.00 1.00
+     * 4 7 6 2 3 1.00 0.00 0.00 1.00
+     * 4 1 2 6 5 1.00 0.00 0.00 1.00
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     */
     void writeOFF(const char* filename);
 };
 
